@@ -1,0 +1,123 @@
+{
+  "enrollments": [
+    {
+      "id": 1,
+      "course_id": 1,
+      "full_name": "Laura Martínez",
+      "email": "laura@m.com",
+      "phone": "3001234567",
+      "city": "Bogotá",
+      "country": "Colombia",
+      "occupation": "Psicóloga",
+      "payment_method": "nequi",
+      "created_at": "2026-05-21T17:34:57.810Z"
+    },
+    {
+      "id": 2,
+      "course_id": 1,
+      "full_name": "Pedro González",
+      "email": "pedro@g.com",
+      "phone": "3109876543",
+      "city": "Medellín",
+      "country": "Colombia",
+      "occupation": "Estudiante",
+      "payment_method": "card",
+      "created_at": "2026-05-21T17:34:57.810Z"
+    },
+    {
+      "id": 3,
+      "course_id": 2,
+      "full_name": "Ana Torres",
+      "email": "ana@t.com",
+      "phone": "3152345678",
+      "city": "Cali",
+      "country": "Colombia",
+      "occupation": "Trabajadora social",
+      "payment_method": "nequi",
+      "created_at": "2026-05-21T17:34:57.810Z"
+    },
+    {
+      "id": 4,
+      "course_id": 2,
+      "full_name": "Diego Ramírez",
+      "email": "diego@r.com",
+      "phone": "3006543210",
+      "city": "Barranquilla",
+      "country": "Colombia",
+      "occupation": "Docente",
+      "payment_method": "card",
+      "created_at": "2026-05-21T17:34:57.810Z"
+    },
+    {
+      "id": 5,
+      "course_id": 3,
+      "full_name": "Isabella Castro",
+      "email": "isa@c.com",
+      "phone": "3204321098",
+      "city": "Bucaramanga",
+      "country": "Colombia",
+      "occupation": "Psicóloga",
+      "payment_method": "daviplata",
+      "created_at": "2026-05-21T17:34:57.810Z"
+    },
+    {
+      "id": 6,
+      "course_id": 1,
+      "full_name": "Ricardo Test",
+      "email": "test@test.com",
+      "phone": "3001112233",
+      "city": "Bogot�",
+      "country": "Colombia",
+      "occupation": "Docente",
+      "payment_method": "nequi",
+      "created_at": "2026-05-21T17:35:25.399Z"
+    }
+  ],
+  "reviews": [
+    {
+      "id": 1,
+      "course_id": 1,
+      "reviewer_name": "Mariana López",
+      "email": "mariana@email.com",
+      "rating": 5,
+      "comment": "Excelente curso, cambió mi perspectiva sobre el trabajo comunitario. Muy recomendado.",
+      "created_at": "2026-05-21T17:34:57.810Z"
+    },
+    {
+      "id": 2,
+      "course_id": 2,
+      "reviewer_name": "Carlos Herrera",
+      "email": "carlos@email.com",
+      "rating": 5,
+      "comment": "La instructora explica de forma muy clara. Los ejemplos prácticos son increíbles.",
+      "created_at": "2026-05-21T17:34:57.810Z"
+    },
+    {
+      "id": 3,
+      "course_id": 3,
+      "reviewer_name": "Sofía Rodríguez",
+      "email": "sofia@email.com",
+      "rating": 4,
+      "comment": "Muy buen contenido, aprendí herramientas que apliqué de inmediato en mi trabajo.",
+      "created_at": "2026-05-21T17:34:57.810Z"
+    },
+    {
+      "id": 4,
+      "course_id": 1,
+      "reviewer_name": "Valentina Ríos",
+      "email": "vale@email.com",
+      "rating": 5,
+      "comment": "Nunca había tomado un curso tan completo. La metodología es única y muy efectiva.",
+      "created_at": "2026-05-21T17:34:57.810Z"
+    },
+    {
+      "id": 5,
+      "course_id": 1,
+      "reviewer_name": "Ricardo Test",
+      "email": "test@test.com",
+      "rating": 5,
+      "comment": "Incre�ble plataforma, muy completa.",
+      "created_at": "2026-05-21T17:35:25.440Z"
+    }
+  ]
+}

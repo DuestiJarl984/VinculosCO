@@ -1,0 +1,1106 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VinculosCO - Psicología Social y Comunitaria</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box}
+        :root{
+            --primary:#6C3FC5;--secondary:#3D9BE9;--accent:#F4A261;
+            --dark:#1A1A2E;--light:#F8F7FF;--white:#fff;--gray:#6B7280;
+            --light-gray:#F3F4F6;--success:#10B981;--danger:#EF4444;
+            --gradient:linear-gradient(135deg,#6C3FC5 0%,#3D9BE9 100%);
+        }
+        html{scroll-behavior:smooth}
+        body{font-family:'Poppins',sans-serif;background:#fff;color:var(--dark)}
+        ::-webkit-scrollbar{width:7px}
+        ::-webkit-scrollbar-track{background:#f1f1f1}
+        ::-webkit-scrollbar-thumb{background:var(--primary);border-radius:4px}
+
+        /* ── NAVBAR ── */
+        nav{
+            position:fixed;top:0;width:100%;
+            background:rgba(26,26,46,.97);backdrop-filter:blur(12px);
+            padding:1rem 6%;display:flex;align-items:center;
+            justify-content:space-between;z-index:1000;
+            box-shadow:0 2px 20px rgba(0,0,0,.35);transition:background .3s;
+        }
+        .nav-logo{display:flex;align-items:center;gap:12px;text-decoration:none}
+        .logo-icon{width:46px;height:46px;background:var(--gradient);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0}
+        .logo-text{color:#fff;font-size:1.25rem;font-weight:700}
+        .logo-text span{color:var(--accent)}
+        .nav-links{display:flex;list-style:none;gap:2.2rem}
+        .nav-links a{color:rgba(255,255,255,.85);text-decoration:none;font-weight:500;font-size:.95rem;transition:color .3s;position:relative}
+        .nav-links a::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:2px;background:var(--accent);transition:width .3s}
+        .nav-links a:hover{color:var(--accent)}
+        .nav-links a:hover::after{width:100%}
+
+        /* ── HERO ── */
+        #inicio{padding-top:78px}
+        .hero{
+            min-height:100vh;
+            background:linear-gradient(135deg,#1A1A2E 0%,#16213E 45%,#0F3460 100%);
+            position:relative;display:flex;align-items:center;padding:5% 6%;overflow:hidden;
+        }
+        .hero::before{content:'';position:absolute;top:-40%;right:-15%;width:620px;height:620px;border-radius:50%;background:radial-gradient(circle,rgba(108,63,197,.28) 0%,transparent 70%)}
+        .hero::after{content:'';position:absolute;bottom:-25%;left:-8%;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,rgba(61,155,233,.2) 0%,transparent 70%)}
+        .hero-content{max-width:600px;position:relative;z-index:2}
+        .hero-badge{display:inline-block;background:rgba(108,63,197,.28);border:1px solid rgba(108,63,197,.5);color:#C4AAFF;padding:6px 18px;border-radius:50px;font-size:.82rem;font-weight:500;margin-bottom:1.5rem}
+        .hero h1{font-size:3.4rem;font-weight:800;color:#fff;line-height:1.2;margin-bottom:1.4rem}
+        .hero h1 span{background:var(--gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+        .hero p{font-size:1.05rem;color:rgba(255,255,255,.75);line-height:1.85;margin-bottom:2.4rem}
+        .hero-btns{display:flex;gap:1rem;flex-wrap:wrap}
+        .btn-primary{background:var(--gradient);color:#fff;padding:13px 30px;border:none;border-radius:50px;font-family:'Poppins',sans-serif;font-size:.95rem;font-weight:600;cursor:pointer;text-decoration:none;transition:transform .3s,box-shadow .3s;box-shadow:0 4px 20px rgba(108,63,197,.4);display:inline-block}
+        .btn-primary:hover{transform:translateY(-3px);box-shadow:0 8px 30px rgba(108,63,197,.6)}
+        .btn-outline{background:transparent;color:#fff;padding:13px 30px;border:2px solid rgba(255,255,255,.3);border-radius:50px;font-family:'Poppins',sans-serif;font-size:.95rem;font-weight:500;cursor:pointer;text-decoration:none;transition:all .3s;display:inline-block}
+        .btn-outline:hover{border-color:var(--accent);color:var(--accent)}
+        .hero-stats{display:flex;gap:2.5rem;margin-top:3rem}
+        .stat-number{font-size:1.9rem;font-weight:800;color:#fff}
+        .stat-label{font-size:.78rem;color:rgba(255,255,255,.55)}
+        .hero-visual-wrap{position:absolute;right:6%;top:50%;transform:translateY(-50%);z-index:2}
+        .hero-visual{width:400px;height:400px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:30px;display:flex;align-items:center;justify-content:center;font-size:9rem;backdrop-filter:blur(10px)}
+
+        /* ── ABOUT ── */
+        .about{padding:5rem 6%;background:var(--light)}
+        .section-label{color:var(--primary);font-size:.82rem;font-weight:600;text-transform:uppercase;letter-spacing:2.5px;display:block;margin-bottom:.5rem;text-align:center}
+        .section-h2{font-size:2.4rem;font-weight:700;color:var(--dark);text-align:center;margin-bottom:.75rem}
+        .section-h2 span{color:var(--primary)}
+        .section-sub{color:var(--gray);text-align:center;max-width:580px;margin:0 auto 3rem;line-height:1.8;font-size:.93rem}
+        .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:3.5rem;align-items:center;max-width:1100px;margin:0 auto}
+        .about-text h3{font-size:1.75rem;font-weight:700;margin-bottom:1rem}
+        .about-text p{color:var(--gray);line-height:1.85;margin-bottom:1.2rem;font-size:.93rem}
+        .features{display:grid;grid-template-columns:1fr 1fr;gap:.8rem;margin-top:.5rem}
+        .feat{display:flex;align-items:center;gap:.5rem;font-size:.88rem;color:var(--dark)}
+        .feat i{color:var(--success);font-size:.95rem}
+        .mini-cards{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+        .mini-card{background:#fff;padding:1.4rem;border-radius:16px;box-shadow:0 4px 20px rgba(0,0,0,.08);text-align:center;transition:transform .3s}
+        .mini-card:hover{transform:translateY(-5px)}
+        .mini-card i{font-size:1.9rem;margin-bottom:.45rem;background:var(--gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+        .mini-card h4{font-size:.9rem;font-weight:600;color:var(--dark)}
+        .mini-card p{font-size:.78rem;color:var(--gray);margin-top:.25rem}
+
+        /* ── DOFA BAND ── */
+        .dofa-band{padding:3.5rem 6%;background:var(--gradient);text-align:center}
+        .dofa-band h3{color:#fff;font-size:1.6rem;font-weight:700;margin-bottom:.4rem}
+        .dofa-band p{color:rgba(255,255,255,.82);font-size:.93rem;margin-bottom:1.6rem}
+        .btn-dofa{background:#fff;color:var(--primary);padding:13px 38px;border:none;border-radius:50px;font-family:'Poppins',sans-serif;font-size:1rem;font-weight:700;cursor:pointer;transition:transform .3s,box-shadow .3s;box-shadow:0 4px 20px rgba(0,0,0,.2)}
+        .btn-dofa:hover{transform:translateY(-3px);box-shadow:0 8px 30px rgba(0,0,0,.3)}
+
+        /* ── COURSES ── */
+        #tienda{padding:5rem 6%;background:#fff}
+        .courses-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;max-width:1200px;margin:0 auto}
+        .course-card{background:#fff;border-radius:22px;overflow:hidden;box-shadow:0 4px 30px rgba(0,0,0,.1);transition:transform .3s,box-shadow .3s;border:1px solid rgba(0,0,0,.06)}
+        .course-card:hover{transform:translateY(-8px);box-shadow:0 14px 50px rgba(108,63,197,.2)}
+        .course-img{height:200px;position:relative;overflow:hidden}
+        .cimg{width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:5rem}
+        .cimg.c1{background:linear-gradient(135deg,#667eea,#764ba2)}
+        .cimg.c2{background:linear-gradient(135deg,#f093fb,#f5576c)}
+        .cimg.c3{background:linear-gradient(135deg,#4facfe,#00f2fe)}
+        .cbadge{position:absolute;top:12px;left:12px;background:rgba(0,0,0,.45);color:#fff;padding:4px 13px;border-radius:50px;font-size:.73rem;font-weight:600;backdrop-filter:blur(5px)}
+        .enroll-badge{
+            position:absolute;top:12px;right:12px;
+            background:rgba(16,185,129,.9);color:#fff;
+            padding:4px 11px;border-radius:50px;font-size:.73rem;font-weight:600;
+            backdrop-filter:blur(5px);display:flex;align-items:center;gap:4px;
+        }
+        .course-body{padding:1.5rem}
+        .cmeta{display:flex;gap:1rem;margin-bottom:.7rem}
+        .cmeta span{font-size:.78rem;color:var(--gray);display:flex;align-items:center;gap:4px}
+        .cmeta i{color:var(--primary)}
+        .ctitle{font-size:1.08rem;font-weight:700;color:var(--dark);margin-bottom:.7rem;line-height:1.4}
+        .cdesc{font-size:.84rem;color:var(--gray);line-height:1.75;margin-bottom:1rem}
+        .cinstructor{display:flex;align-items:center;gap:.75rem;margin-bottom:.9rem;padding:.7rem;background:var(--light);border-radius:12px}
+        .cavatar{width:36px;height:36px;border-radius:50%;background:var(--gradient);color:#fff;display:flex;align-items:center;justify-content:center;font-size:.82rem;font-weight:700;flex-shrink:0}
+        .cins-name{font-size:.83rem;font-weight:600;color:var(--dark)}
+        .cins-role{font-size:.73rem;color:var(--gray)}
+        .crating{display:flex;align-items:center;gap:.4rem;margin-bottom:.9rem;flex-wrap:wrap}
+        .stars-display{color:#F59E0B;font-size:.9rem;letter-spacing:1px}
+        .rtext{font-size:.78rem;color:var(--gray)}
+        .cfoot{display:flex;align-items:center;justify-content:space-between;padding-top:1rem;border-top:1px solid var(--light-gray);gap:.5rem;flex-wrap:wrap}
+        .cprice{font-size:1.35rem;font-weight:800;color:var(--primary)}
+        .cprice .cur{font-size:.8rem;font-weight:500;color:var(--gray)}
+        .cfoot-btns{display:flex;gap:.5rem}
+        .btn-buy{background:var(--gradient);color:#fff;padding:10px 20px;border:none;border-radius:50px;font-family:'Poppins',sans-serif;font-size:.82rem;font-weight:600;cursor:pointer;transition:transform .3s,box-shadow .3s;box-shadow:0 4px 15px rgba(108,63,197,.3);white-space:nowrap}
+        .btn-buy:hover{transform:translateY(-2px);box-shadow:0 6px 25px rgba(108,63,197,.5)}
+        .btn-reviews{background:transparent;color:var(--primary);padding:10px 16px;border:2px solid var(--primary);border-radius:50px;font-family:'Poppins',sans-serif;font-size:.82rem;font-weight:600;cursor:pointer;transition:all .3s;white-space:nowrap}
+        .btn-reviews:hover{background:var(--primary);color:#fff}
+
+        /* ── CONTACT ── */
+        #contacto{padding:5rem 6%;background:var(--light)}
+        .team-grid{display:flex;gap:2rem;justify-content:center;max-width:740px;margin:0 auto}
+        .team-card{background:#fff;border-radius:24px;padding:2.5rem 2rem;text-align:center;box-shadow:0 4px 30px rgba(0,0,0,.1);flex:1;transition:transform .3s;border:1px solid rgba(108,63,197,.1)}
+        .team-card:hover{transform:translateY(-8px)}
+        .team-avatar{width:130px;height:130px;border-radius:50%;margin:0 auto 1.5rem;border:4px solid var(--primary);box-shadow:0 4px 20px rgba(108,63,197,.3);overflow:hidden;background:var(--gradient)}
+        .team-avatar img{width:100%;height:100%;object-fit:cover;display:block}
+        .team-name{font-size:1.18rem;font-weight:700;color:var(--dark);margin-bottom:.2rem}
+        .team-role{font-size:.85rem;color:var(--primary);font-weight:500;margin-bottom:1rem}
+        .team-bio{font-size:.83rem;color:var(--gray);line-height:1.75;margin-bottom:1.4rem}
+        .team-social{display:flex;gap:.7rem;justify-content:center}
+        .team-social a{width:36px;height:36px;border-radius:50%;background:var(--light);display:flex;align-items:center;justify-content:center;color:var(--primary);font-size:.88rem;text-decoration:none;transition:all .3s}
+        .team-social a:hover{background:var(--gradient);color:#fff}
+
+        /* ── FOOTER ── */
+        footer{background:var(--dark);color:#fff;padding:3rem 6% 1.5rem}
+        .footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:3rem;margin-bottom:2rem}
+        .footer-brand p{color:rgba(255,255,255,.6);font-size:.85rem;line-height:1.8;margin:1rem 0 1.5rem}
+        .social-links{display:flex;gap:.7rem}
+        .slink{width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center;color:#fff;font-size:.95rem;text-decoration:none;transition:all .3s}
+        .slink:hover{background:var(--primary);transform:translateY(-3px)}
+        .footer-col h4{font-size:.95rem;font-weight:600;margin-bottom:1rem;color:var(--accent)}
+        .footer-col ul{list-style:none}
+        .footer-col li{margin-bottom:.5rem}
+        .footer-col a{color:rgba(255,255,255,.6);text-decoration:none;font-size:.85rem;transition:color .3s}
+        .footer-col a:hover{color:#fff}
+        .footer-bottom{border-top:1px solid rgba(255,255,255,.1);padding-top:1.4rem;text-align:center;color:rgba(255,255,255,.4);font-size:.78rem}
+
+        /* ── OVERLAYS / MODALS ── */
+        .overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.75);z-index:2000;align-items:center;justify-content:center;backdrop-filter:blur(5px)}
+        .overlay.open{display:flex}
+        .modal{background:#fff;border-radius:24px;width:92%;max-height:92vh;overflow-y:auto;position:relative;animation:popIn .3s ease}
+        @keyframes popIn{from{opacity:0;transform:scale(.88) translateY(24px)}to{opacity:1;transform:scale(1) translateY(0)}}
+        .modal-x{position:absolute;top:1rem;right:1rem;width:36px;height:36px;border-radius:50%;background:rgba(0,0,0,.12);border:none;cursor:pointer;font-size:1rem;display:flex;align-items:center;justify-content:center;transition:background .3s;z-index:10}
+        .modal-x:hover{background:rgba(0,0,0,.22)}
+
+        /* DOFA */
+        .dofa-head{padding:2rem 2rem 1.2rem;text-align:center;background:var(--gradient);color:#fff;border-radius:24px 24px 0 0}
+        .dofa-head h2{font-size:1.5rem;font-weight:700}
+        .dofa-head p{font-size:.85rem;opacity:.85;margin-top:.4rem}
+        .dofa-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;padding:1.4rem}
+        .dq{padding:1.4rem;border-radius:16px}
+        .dq.F{background:#ECFDF5;border:1px solid #A7F3D0}
+        .dq.O{background:#EFF6FF;border:1px solid #BFDBFE}
+        .dq.D{background:#FEF3C7;border:1px solid #FDE68A}
+        .dq.A{background:#FEF2F2;border:1px solid #FECACA}
+        .dq h3{font-size:.95rem;font-weight:700;margin-bottom:.7rem;display:flex;align-items:center;gap:.4rem}
+        .dq.F h3{color:#059669}.dq.O h3{color:#2563EB}.dq.D h3{color:#D97706}.dq.A h3{color:#DC2626}
+        .dq ul{list-style:none}
+        .dq li{font-size:.8rem;color:var(--dark);padding:.28rem 0;display:flex;gap:.45rem;line-height:1.5}
+        .dq li::before{content:'•';flex-shrink:0}
+        .dq.F li::before{color:#059669}.dq.O li::before{color:#2563EB}.dq.D li::before{color:#D97706}.dq.A li::before{color:#DC2626}
+
+        /* PAYMENT MODAL */
+        .pay-head{padding:1.8rem 2rem 1.2rem;background:var(--gradient);color:#fff;border-radius:24px 24px 0 0;text-align:center}
+        .pay-head h2{font-size:1.3rem;font-weight:700}
+        .pay-head p{font-size:.83rem;opacity:.85;margin-top:.25rem}
+        .pay-price{font-size:1.9rem;font-weight:800;margin-top:.35rem}
+        .pay-body{padding:1.4rem}
+        .pay-body > h3{font-size:.93rem;font-weight:600;color:var(--dark);margin-bottom:1rem;text-align:center}
+        .ptabs{display:flex;gap:.5rem;margin-bottom:1.3rem}
+        .ptab{flex:1;padding:10px;border:2px solid var(--light-gray);border-radius:12px;background:#fff;font-family:'Poppins',sans-serif;font-size:.8rem;font-weight:500;cursor:pointer;transition:all .3s;display:flex;align-items:center;justify-content:center;gap:.4rem}
+        .ptab.on{border-color:var(--primary);background:#F5F0FF;color:var(--primary)}
+        .ptab:hover:not(.on){border-color:#D1D5DB;background:var(--light)}
+        .pform{display:none}
+        .pform.on{display:block}
+        .fg{margin-bottom:.85rem}
+        .fg label{display:block;font-size:.76rem;font-weight:500;color:var(--gray);margin-bottom:.3rem}
+        .fg label .req{color:var(--danger)}
+        .fg input,.fg select{width:100%;padding:10px 13px;border:2px solid var(--light-gray);border-radius:12px;font-family:'Poppins',sans-serif;font-size:.87rem;transition:border-color .3s;outline:none;background:#fff}
+        .fg input:focus,.fg select:focus{border-color:var(--primary)}
+        .frow{display:grid;grid-template-columns:1fr 1fr;gap:.85rem}
+        .field-error{font-size:.72rem;color:var(--danger);margin-top:.2rem;display:none}
+        .nequi-area{text-align:center;padding:.5rem 0}
+        .nq-opts{display:flex;gap:1rem;justify-content:center;margin-bottom:1.2rem}
+        .nq-opt{flex:1;padding:.9rem;border:2px solid var(--light-gray);border-radius:14px;cursor:pointer;transition:all .3s;max-width:160px}
+        .nq-opt:hover,.nq-opt.sel{border-color:var(--primary);background:#F5F0FF}
+        .nq-icon{font-size:2.2rem;margin-bottom:.3rem}
+        .nq-name{font-weight:600;font-size:.88rem;color:var(--dark)}
+        .nq-number{font-size:1.2rem;font-weight:700;color:var(--primary);background:var(--light);padding:.6rem 1.3rem;border-radius:12px;margin:.8rem auto;letter-spacing:2px;display:inline-block}
+        .nq-steps{text-align:left;font-size:.81rem;color:var(--gray);line-height:2.1;max-width:280px;margin:0 auto}
+        .btn-confirm{width:100%;background:var(--gradient);color:#fff;padding:13px;border:none;border-radius:12px;font-family:'Poppins',sans-serif;font-size:.93rem;font-weight:600;cursor:pointer;transition:all .3s;margin-top:.85rem;box-shadow:0 4px 15px rgba(108,63,197,.3)}
+        .btn-confirm:hover:not(:disabled){transform:translateY(-2px);box-shadow:0 8px 25px rgba(108,63,197,.5)}
+        .btn-confirm:disabled{opacity:.6;cursor:not-allowed}
+        .success-box{display:none;text-align:center;padding:3rem 2rem}
+        .success-box.on{display:block}
+        .success-box .s-icon{font-size:5rem;margin-bottom:1rem}
+        .success-box h3{font-size:1.4rem;font-weight:700;color:var(--dark);margin-bottom:.5rem}
+        .success-box p{color:var(--gray);margin-bottom:1.3rem;font-size:.88rem}
+
+        /* REVIEWS MODAL */
+        .rev-head{padding:1.8rem 2rem 1.2rem;background:var(--gradient);color:#fff;border-radius:24px 24px 0 0;text-align:center}
+        .rev-head h2{font-size:1.3rem;font-weight:700}
+        .rev-head p{font-size:.83rem;opacity:.85;margin-top:.2rem}
+        .rev-body{padding:1.4rem}
+        .rev-list{margin-bottom:1.6rem;max-height:300px;overflow-y:auto;padding-right:4px}
+        .rev-item{padding:1rem;background:var(--light);border-radius:14px;margin-bottom:.85rem;border:1px solid rgba(108,63,197,.08)}
+        .rev-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:.5rem;flex-wrap:wrap;gap:.4rem}
+        .rev-name{font-weight:600;font-size:.88rem;color:var(--dark)}
+        .rev-stars{color:#F59E0B;font-size:.9rem}
+        .rev-date{font-size:.73rem;color:var(--gray)}
+        .rev-comment{font-size:.83rem;color:var(--gray);line-height:1.65}
+        .no-reviews{text-align:center;color:var(--gray);font-size:.88rem;padding:2rem;background:var(--light);border-radius:14px}
+        .rev-form-title{font-size:1rem;font-weight:700;color:var(--dark);margin-bottom:1rem;padding-top:1rem;border-top:2px solid var(--light-gray)}
+        .star-select{display:flex;gap:.3rem;margin-bottom:.85rem;flex-direction:row-reverse;justify-content:flex-end}
+        .star-select input{display:none}
+        .star-select label{font-size:1.8rem;cursor:pointer;color:#D1D5DB;transition:color .2s}
+        .star-select input:checked ~ label,.star-select label:hover,.star-select label:hover ~ label{color:#F59E0B}
+        .loading-spin{display:inline-block;width:18px;height:18px;border:2px solid rgba(255,255,255,.4);border-top-color:#fff;border-radius:50%;animation:spin .7s linear infinite;vertical-align:middle;margin-right:6px}
+        @keyframes spin{to{transform:rotate(360deg)}}
+
+        /* ── RESPONSIVE ── */
+        @media(max-width:960px){
+            .hero h1{font-size:2.6rem}
+            .hero-visual-wrap{display:none}
+            .about-grid{grid-template-columns:1fr}
+            .courses-grid{grid-template-columns:1fr 1fr}
+            .footer-grid{grid-template-columns:1fr 1fr}
+        }
+        @media(max-width:640px){
+            nav{padding:1rem 4%}
+            .nav-links{gap:1.2rem}
+            .nav-links a{font-size:.8rem}
+            .hero h1{font-size:2rem}
+            .courses-grid{grid-template-columns:1fr}
+            .team-grid{flex-direction:column;align-items:center}
+            .team-card{max-width:340px;width:100%}
+            .dofa-grid{grid-template-columns:1fr}
+            .footer-grid{grid-template-columns:1fr}
+            .frow{grid-template-columns:1fr}
+        }
+    </style>
+</head>
+<body>
+
+<!-- ════ NAVBAR ════ -->
+<nav id="mainNav">
+    <a href="#inicio" class="nav-logo">
+        <div class="logo-icon">🧠</div>
+        <span class="logo-text">Vínculos<span>CO</span></span>
+    </a>
+    <ul class="nav-links">
+        <li><a href="#inicio">Inicio</a></li>
+        <li><a href="#tienda">Cursos</a></li>
+        <li><a href="#contacto">Nosotros</a></li>
+    </ul>
+</nav>
+
+<!-- ════ INICIO ════ -->
+<section id="inicio">
+
+    <div class="hero">
+        <div class="hero-content">
+            <div class="hero-badge">🎓 Formación Especializada en Psicología</div>
+            <h1>Transforma <span>Comunidades</span><br>desde la Psicología</h1>
+            <p>Somos la plataforma líder en formación de psicología social y comunitaria. Aprende con expertas, desarrolla habilidades reales y genera impacto positivo en tu entorno.</p>
+            <div class="hero-btns">
+                <a href="#tienda" class="btn-primary">Ver Cursos</a>
+                <button onclick="openDofa()" class="btn-outline">📊 Análisis DOFA</button>
+            </div>
+            <div class="hero-stats">
+                <div class="stat">
+                    <div class="stat-number" id="totalEnrolled">—</div>
+                    <div class="stat-label">Estudiantes</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">3</div>
+                    <div class="stat-label">Cursos</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number" id="globalRating">—</div>
+                    <div class="stat-label">Rating</div>
+                </div>
+            </div>
+        </div>
+        <div class="hero-visual-wrap">
+            <div class="hero-visual">🧠</div>
+        </div>
+    </div>
+
+    <div class="about">
+        <span class="section-label">¿Quiénes somos?</span>
+        <h2 class="section-h2">Educación que <span>Transforma</span></h2>
+        <p class="section-sub">Combinamos conocimiento académico sólido con intervención comunitaria real para formar profesionales que cambien realidades.</p>
+        <div class="about-grid">
+            <div class="about-text">
+                <h3>¿Qué es VinculosCO?</h3>
+                <p>Somos una plataforma educativa especializada en psicología social y comunitaria, dedicada a formar profesionales capaces de transformar comunidades a través del conocimiento psicológico aplicado.</p>
+                <p>Nuestros cursos combinan teoría sólida con práctica real, permitiendo a nuestros estudiantes intervenir efectivamente en contextos sociales complejos con herramientas modernas.</p>
+                <div class="features">
+                    <div class="feat"><i class="fas fa-check-circle"></i> Instructoras certificadas</div>
+                    <div class="feat"><i class="fas fa-check-circle"></i> Contenido actualizado</div>
+                    <div class="feat"><i class="fas fa-check-circle"></i> Certificado incluido</div>
+                    <div class="feat"><i class="fas fa-check-circle"></i> Acceso de por vida</div>
+                    <div class="feat"><i class="fas fa-check-circle"></i> Comunidad activa</div>
+                    <div class="feat"><i class="fas fa-check-circle"></i> Soporte personalizado</div>
+                </div>
+            </div>
+            <div class="mini-cards">
+                <div class="mini-card"><i class="fas fa-brain"></i><h4>Psicología Aplicada</h4><p>Conocimiento práctico para intervención real</p></div>
+                <div class="mini-card"><i class="fas fa-users"></i><h4>Enfoque Comunitario</h4><p>Herramientas para el trabajo colectivo</p></div>
+                <div class="mini-card"><i class="fas fa-certificate"></i><h4>Certificación Oficial</h4><p>Diplomas reconocidos y validados</p></div>
+                <div class="mini-card"><i class="fas fa-laptop"></i><h4>100% Online</h4><p>Aprende a tu ritmo, donde quieras</p></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="dofa-band">
+        <h3>Conoce Nuestro Análisis Estratégico</h3>
+        <p>Descubre las fortalezas, oportunidades, debilidades y amenazas de VinculosCO</p>
+        <button onclick="openDofa()" class="btn-dofa">📊 Ver Matriz DOFA</button>
+    </div>
+
+</section>
+
+<!-- ════ TIENDA / CURSOS ════ -->
+<section id="tienda">
+    <span class="section-label">Nuestros Cursos</span>
+    <h2 class="section-h2">Formación en <span>Psicología Comunitaria</span></h2>
+    <p class="section-sub">Selecciona el curso que mejor se adapte a tus objetivos. Todos incluyen certificado y acceso de por vida.</p>
+
+    <div class="courses-grid">
+
+        <!-- CURSO 1 -->
+        <div class="course-card">
+            <div class="course-img">
+                <div class="cimg c1">🧠</div>
+                <span class="cbadge">⭐ Más Popular</span>
+                <span class="enroll-badge" id="badge-1">
+                    <i class="fas fa-user-graduate"></i> <span id="count-1">—</span> inscritos
+                </span>
+            </div>
+            <div class="course-body">
+                <div class="cmeta">
+                    <span><i class="fas fa-clock"></i> 8 semanas</span>
+                    <span><i class="fas fa-book"></i> 24 lecciones</span>
+                </div>
+                <h3 class="ctitle">Psicología Comunitaria: Fundamentos e Intervención</h3>
+                <p class="cdesc">Aprende los pilares de la psicología comunitaria y cómo aplicarlos para intervenir de manera efectiva en comunidades vulnerables con metodologías internacionalmente reconocidas.</p>
+                <div class="cinstructor">
+                    <div class="cavatar">KR</div>
+                    <div>
+                        <div class="cins-name">Katherin Rojas</div>
+                        <div class="cins-role">Psicóloga Social — VinculosCO</div>
+                    </div>
+                </div>
+                <div class="crating">
+                    <span class="stars-display" id="stars-1">★★★★★</span>
+                    <span class="rtext" id="rating-text-1">Cargando...</span>
+                </div>
+                <div class="cfoot">
+                    <div class="cprice"><span class="cur">COP </span>$149.000</div>
+                    <div class="cfoot-btns">
+                        <button class="btn-reviews" onclick="openReviews(1,'Fundamentos e Intervención')">💬 Reseñas</button>
+                        <button class="btn-buy" onclick="openPay(1)">Comprar Ahora</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- CURSO 2 -->
+        <div class="course-card">
+            <div class="course-img">
+                <div class="cimg c2">💆</div>
+                <span class="cbadge">🆕 Nuevo</span>
+                <span class="enroll-badge" id="badge-2">
+                    <i class="fas fa-user-graduate"></i> <span id="count-2">—</span> inscritos
+                </span>
+            </div>
+            <div class="course-body">
+                <div class="cmeta">
+                    <span><i class="fas fa-clock"></i> 10 semanas</span>
+                    <span><i class="fas fa-book"></i> 30 lecciones</span>
+                </div>
+                <h3 class="ctitle">Salud Mental Colectiva: Herramientas y Estrategias</h3>
+                <p class="cdesc">Desarrolla competencias para promover y proteger la salud mental en contextos colectivos, comunitarios e institucionales usando enfoques innovadores y basados en evidencia.</p>
+                <div class="cinstructor">
+                    <div class="cavatar">YA</div>
+                    <div>
+                        <div class="cins-name">Yerlenis Alvarez</div>
+                        <div class="cins-role">Especialista en Salud Mental — VinculosCO</div>
+                    </div>
+                </div>
+                <div class="crating">
+                    <span class="stars-display" id="stars-2">★★★★★</span>
+                    <span class="rtext" id="rating-text-2">Cargando...</span>
+                </div>
+                <div class="cfoot">
+                    <div class="cprice"><span class="cur">COP </span>$189.000</div>
+                    <div class="cfoot-btns">
+                        <button class="btn-reviews" onclick="openReviews(2,'Salud Mental Colectiva')">💬 Reseñas</button>
+                        <button class="btn-buy" onclick="openPay(2)">Comprar Ahora</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- CURSO 3 -->
+        <div class="course-card">
+            <div class="course-img">
+                <div class="cimg c3">🌍</div>
+                <span class="cbadge">🔥 Oferta</span>
+                <span class="enroll-badge" id="badge-3">
+                    <i class="fas fa-user-graduate"></i> <span id="count-3">—</span> inscritos
+                </span>
+            </div>
+            <div class="course-body">
+                <div class="cmeta">
+                    <span><i class="fas fa-clock"></i> 6 semanas</span>
+                    <span><i class="fas fa-book"></i> 18 lecciones</span>
+                </div>
+                <h3 class="ctitle">Transformación Social desde la Psicología</h3>
+                <p class="cdesc">Herramientas y estrategias psicológicas para líderes comunitarios y agentes de cambio social que buscan impactar positivamente su entorno de forma sostenible.</p>
+                <div class="cinstructor">
+                    <div class="cavatar">KR</div>
+                    <div>
+                        <div class="cins-name">Katherin Rojas</div>
+                        <div class="cins-role">Psicóloga Comunitaria — VinculosCO</div>
+                    </div>
+                </div>
+                <div class="crating">
+                    <span class="stars-display" id="stars-3">★★★★★</span>
+                    <span class="rtext" id="rating-text-3">Cargando...</span>
+                </div>
+                <div class="cfoot">
+                    <div class="cprice"><span class="cur">COP </span>$129.000</div>
+                    <div class="cfoot-btns">
+                        <button class="btn-reviews" onclick="openReviews(3,'Transformación Social')">💬 Reseñas</button>
+                        <button class="btn-buy" onclick="openPay(3)">Comprar Ahora</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- ════ CONTACTO ════ -->
+<section id="contacto">
+    <span class="section-label">Nuestro Equipo</span>
+    <h2 class="section-h2">Conoce a las <span>Fundadoras</span></h2>
+    <p class="section-sub">El equipo detrás de VinculosCO, comprometido con la educación y el bienestar de las comunidades</p>
+    <div class="team-grid">
+        <div class="team-card">
+            <div class="team-avatar">
+                <img src="Katherin.jpeg" alt="Katherin Rojas">
+            </div>
+            <h3 class="team-name">Katherin Rojas</h3>
+            <p class="team-role">Co-fundadora &amp; Directora Académica</p>
+            <p class="team-bio">Apasionada por la psicología social y la transformación comunitaria. Comprometida con brindar educación de calidad, accesible y con impacto real en las comunidades.</p>
+            <div class="team-social">
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-linkedin"></i></a>
+                <a href="#"><i class="fas fa-envelope"></i></a>
+            </div>
+        </div>
+        <div class="team-card">
+            <div class="team-avatar">
+                <img src="Yerlenis.jpeg" alt="Yerlenis Alvarez">
+            </div>
+            <h3 class="team-name">Yerlenis Alvarez</h3>
+            <p class="team-role">Co-fundadora &amp; Directora de Comunidad</p>
+            <p class="team-bio">Especialista en intervención comunitaria y bienestar colectivo. Dedicada a construir espacios de aprendizaje inclusivos, transformadores y centrados en el ser humano.</p>
+            <div class="team-social">
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-linkedin"></i></a>
+                <a href="#"><i class="fas fa-envelope"></i></a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ════ FOOTER ════ -->
+<footer>
+    <div class="footer-grid">
+        <div class="footer-brand">
+            <a href="#inicio" class="nav-logo" style="margin-bottom:.8rem;display:inline-flex;">
+                <div class="logo-icon" style="width:40px;height:40px;font-size:20px;">🧠</div>
+                <span class="logo-text">Vínculos<span>CO</span></span>
+            </a>
+            <p>Plataforma educativa especializada en psicología social y comunitaria. Transformando vidas a través del conocimiento y la acción colectiva.</p>
+            <div class="social-links">
+                <a href="#" class="slink"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="slink"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="slink"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="slink"><i class="fab fa-youtube"></i></a>
+                <a href="#" class="slink"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#" class="slink"><i class="fab fa-tiktok"></i></a>
+            </div>
+        </div>
+        <div class="footer-col">
+            <h4>Navegación</h4>
+            <ul>
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#tienda">Cursos</a></li>
+                <li><a href="#contacto">Nosotras</a></li>
+                <li><a href="#" onclick="openDofa();return false;">Matriz DOFA</a></li>
+            </ul>
+        </div>
+        <div class="footer-col">
+            <h4>Contacto</h4>
+            <ul>
+                <li><a href="#">vinculosco@gmail.com</a></li>
+                <li><a href="#">+57 300 000 0000</a></li>
+                <li><a href="#">Colombia</a></li>
+                <li><a href="#">Lun–Vie 8am–6pm</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        © 2025 VinculosCO · Todos los derechos reservados ·
+        Desarrollado por <strong>Katherin Rojas &amp; Yerlenis Alvarez</strong>
+    </div>
+</footer>
+
+<!-- ════ MODAL DOFA ════ -->
+<div class="overlay" id="dofaOverlay">
+    <div class="modal" style="max-width:760px;">
+        <button class="modal-x" onclick="closeDofa()"><i class="fas fa-times"></i></button>
+        <div class="dofa-head">
+            <h2>📊 Matriz DOFA — VinculosCO</h2>
+            <p>Análisis estratégico de nuestra plataforma educativa de psicología</p>
+        </div>
+        <div class="dofa-grid">
+            <div class="dq F">
+                <h3>💪 Fortalezas</h3>
+                <ul>
+                    <li>Contenido altamente especializado en psicología comunitaria</li>
+                    <li>Instructoras con amplia experiencia práctica en campo</li>
+                    <li>Plataforma accesible, intuitiva y fácil de navegar</li>
+                    <li>Precios competitivos y accesibles para estudiantes</li>
+                    <li>Certificados con valor profesional reconocido</li>
+                    <li>Acompañamiento personalizado durante el aprendizaje</li>
+                </ul>
+            </div>
+            <div class="dq O">
+                <h3>🚀 Oportunidades</h3>
+                <ul>
+                    <li>Creciente demanda de formación en salud mental</li>
+                    <li>Aumento del aprendizaje en línea post-pandemia</li>
+                    <li>Escasa oferta de cursos especializados en español</li>
+                    <li>Posibles alianzas con ONGs y entidades gubernamentales</li>
+                    <li>Mercado latinoamericano en constante expansión</li>
+                    <li>Tendencia global hacia el bienestar comunitario</li>
+                </ul>
+            </div>
+            <div class="dq D">
+                <h3>⚠️ Debilidades</h3>
+                <ul>
+                    <li>Marca nueva sin reconocimiento previo en el mercado</li>
+                    <li>Recursos iniciales limitados para marketing digital</li>
+                    <li>Catálogo de cursos reducido en la etapa inicial</li>
+                    <li>Necesidad de actualización constante del contenido</li>
+                    <li>Dependencia de plataformas externas de pago</li>
+                    <li>Falta de app móvil propia</li>
+                </ul>
+            </div>
+            <div class="dq A">
+                <h3>🔴 Amenazas</h3>
+                <ul>
+                    <li>Competencia de grandes plataformas internacionales</li>
+                    <li>Saturación del mercado de cursos en línea</li>
+                    <li>Resistencia cultural a pagar por formación digital</li>
+                    <li>Cambios en regulaciones educativas nacionales</li>
+                    <li>Inestabilidad económica en la región</li>
+                    <li>Piratería y distribución no autorizada de contenidos</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ════ MODAL PAGO ════ -->
+<div class="overlay" id="payOverlay">
+    <div class="modal" style="max-width:520px;">
+        <button class="modal-x" onclick="closePay()"><i class="fas fa-times"></i></button>
+
+        <div id="payContent">
+            <div class="pay-head">
+                <h2>💳 Inscripción al Curso</h2>
+                <p id="payName"></p>
+                <div class="pay-price" id="payPrice"></div>
+            </div>
+            <div class="pay-body">
+                <h3>Método de pago</h3>
+                <div class="ptabs">
+                    <button class="ptab on" onclick="switchTab('card',this)"><i class="fas fa-credit-card"></i> Tarjeta Crédito/Débito</button>
+                    <button class="ptab" onclick="switchTab('nequi',this)">📱 Nequi / Daviplata</button>
+                </div>
+
+                <!-- Formulario Tarjeta -->
+                <div class="pform on" id="cardForm">
+                    <div class="frow">
+                        <div class="fg">
+                            <label>Nombre completo <span class="req">*</span></label>
+                            <input type="text" id="c_name" placeholder="Tu nombre completo">
+                        </div>
+                        <div class="fg">
+                            <label>Ocupación <span class="req">*</span></label>
+                            <input type="text" id="c_occupation" placeholder="Ej: Psicóloga, Estudiante">
+                        </div>
+                    </div>
+                    <div class="frow">
+                        <div class="fg">
+                            <label>Correo electrónico <span class="req">*</span></label>
+                            <input type="email" id="c_email" placeholder="tu@correo.com">
+                        </div>
+                        <div class="fg">
+                            <label>Teléfono <span class="req">*</span></label>
+                            <input type="tel" id="c_phone" placeholder="300 000 0000">
+                        </div>
+                    </div>
+                    <div class="frow">
+                        <div class="fg">
+                            <label>Ciudad <span class="req">*</span></label>
+                            <input type="text" id="c_city" placeholder="Bogotá, Medellín...">
+                        </div>
+                        <div class="fg">
+                            <label>País <span class="req">*</span></label>
+                            <select id="c_country">
+                                <option value="Colombia" selected>Colombia</option>
+                                <option value="Venezuela">Venezuela</option>
+                                <option value="Ecuador">Ecuador</option>
+                                <option value="Perú">Perú</option>
+                                <option value="México">México</option>
+                                <option value="Argentina">Argentina</option>
+                                <option value="Chile">Chile</option>
+                                <option value="Otro">Otro</option>
+                            </select>
+                        </div>
+                    </div>
+                    <hr style="border:none;border-top:2px solid var(--light-gray);margin:.5rem 0 1rem">
+                    <div class="fg">
+                        <label>Nombre en la tarjeta <span class="req">*</span></label>
+                        <input type="text" id="c_cardname" placeholder="Igual a tu tarjeta">
+                    </div>
+                    <div class="fg">
+                        <label>Número de tarjeta <span class="req">*</span></label>
+                        <input type="text" id="c_cardnum" placeholder="0000 0000 0000 0000" maxlength="19">
+                    </div>
+                    <div class="frow">
+                        <div class="fg">
+                            <label>Vencimiento <span class="req">*</span></label>
+                            <input type="text" id="c_exp" placeholder="MM/AA" maxlength="5">
+                        </div>
+                        <div class="fg">
+                            <label>CVV <span class="req">*</span></label>
+                            <input type="text" id="c_cvv" placeholder="123" maxlength="3">
+                        </div>
+                    </div>
+                    <p style="font-size:.73rem;color:var(--gray);text-align:center;margin-top:.3rem">🔒 Pago 100% seguro — datos cifrados con SSL</p>
+                    <button class="btn-confirm" id="btnConfirmCard" onclick="submitEnroll('card')">
+                        <i class="fas fa-lock"></i> Confirmar inscripción
+                    </button>
+                </div>
+
+                <!-- Formulario Nequi / Daviplata -->
+                <div class="pform" id="nequiForm">
+                    <div class="frow">
+                        <div class="fg">
+                            <label>Nombre completo <span class="req">*</span></label>
+                            <input type="text" id="n_name" placeholder="Tu nombre completo">
+                        </div>
+                        <div class="fg">
+                            <label>Ocupación <span class="req">*</span></label>
+                            <input type="text" id="n_occupation" placeholder="Ej: Psicóloga, Docente">
+                        </div>
+                    </div>
+                    <div class="frow">
+                        <div class="fg">
+                            <label>Correo electrónico <span class="req">*</span></label>
+                            <input type="email" id="n_email" placeholder="tu@correo.com">
+                        </div>
+                        <div class="fg">
+                            <label>Teléfono <span class="req">*</span></label>
+                            <input type="tel" id="n_phone" placeholder="300 000 0000">
+                        </div>
+                    </div>
+                    <div class="frow">
+                        <div class="fg">
+                            <label>Ciudad <span class="req">*</span></label>
+                            <input type="text" id="n_city" placeholder="Bogotá, Medellín...">
+                        </div>
+                        <div class="fg">
+                            <label>País <span class="req">*</span></label>
+                            <select id="n_country">
+                                <option value="Colombia" selected>Colombia</option>
+                                <option value="Venezuela">Venezuela</option>
+                                <option value="Ecuador">Ecuador</option>
+                                <option value="Perú">Perú</option>
+                                <option value="México">México</option>
+                                <option value="Argentina">Argentina</option>
+                                <option value="Chile">Chile</option>
+                                <option value="Otro">Otro</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="nequi-area" style="margin-top:.5rem">
+                        <div class="nq-opts">
+                            <div class="nq-opt sel" onclick="selApp(this,'nequi')">
+                                <div class="nq-icon">💜</div>
+                                <div class="nq-name">Nequi</div>
+                            </div>
+                            <div class="nq-opt" onclick="selApp(this,'daviplata')">
+                                <div class="nq-icon">🔴</div>
+                                <div class="nq-name">Daviplata</div>
+                            </div>
+                        </div>
+                        <p style="color:var(--gray);font-size:.83rem">Envía el pago al número:</p>
+                        <div class="nq-number">📱 300 000 0000</div>
+                        <div class="nq-steps">
+                            <p>1️⃣ Abre tu app <strong id="appSel">Nequi</strong></p>
+                            <p>2️⃣ Envía el monto exacto del curso</p>
+                            <p>3️⃣ Concepto: <strong id="payRef">CURSO01</strong></p>
+                            <p>4️⃣ Guarda el comprobante</p>
+                        </div>
+                    </div>
+                    <button class="btn-confirm" id="btnConfirmNequi" onclick="submitEnroll('nequi')">
+                        ✅ Confirmar inscripción
+                    </button>
+                </div>
+
+                <div id="payError" style="display:none;background:#FEF2F2;border:1px solid #FECACA;color:#DC2626;padding:.8rem 1rem;border-radius:10px;font-size:.83rem;margin-top:.7rem;text-align:center"></div>
+            </div>
+        </div>
+
+        <div class="success-box" id="successBox">
+            <div class="s-icon">✅</div>
+            <h3>¡Inscripción Exitosa!</h3>
+            <p id="successMsg">Tu inscripción fue confirmada. Recibirás un correo con los datos de acceso a tu curso en los próximos minutos.</p>
+            <button class="btn-confirm" onclick="closePay()" style="max-width:200px;margin:0 auto">Cerrar</button>
+        </div>
+    </div>
+</div>
+
+<!-- ════ MODAL RESEÑAS ════ -->
+<div class="overlay" id="revOverlay">
+    <div class="modal" style="max-width:580px;">
+        <button class="modal-x" onclick="closeReviews()"><i class="fas fa-times"></i></button>
+        <div class="rev-head">
+            <h2>💬 Reseñas del Curso</h2>
+            <p id="revCourseName"></p>
+        </div>
+        <div class="rev-body">
+            <div class="rev-list" id="revList">
+                <p style="text-align:center;color:var(--gray);font-size:.88rem;">Cargando reseñas...</p>
+            </div>
+            <div class="rev-form-title">Deja tu reseña</div>
+            <div class="fg">
+                <label>Tu nombre <span class="req">*</span></label>
+                <input type="text" id="rv_name" placeholder="¿Cómo te llamas?">
+            </div>
+            <div class="fg">
+                <label>Tu correo <span class="req">*</span></label>
+                <input type="email" id="rv_email" placeholder="tu@correo.com">
+            </div>
+            <div class="fg">
+                <label>Calificación <span class="req">*</span></label>
+                <div class="star-select">
+                    <input type="radio" id="s5" name="stars" value="5"><label for="s5">★</label>
+                    <input type="radio" id="s4" name="stars" value="4"><label for="s4">★</label>
+                    <input type="radio" id="s3" name="stars" value="3"><label for="s3">★</label>
+                    <input type="radio" id="s2" name="stars" value="2"><label for="s2">★</label>
+                    <input type="radio" id="s1" name="stars" value="1"><label for="s1">★</label>
+                </div>
+            </div>
+            <div class="fg">
+                <label>Comentario <span class="req">*</span></label>
+                <input type="text" id="rv_comment" placeholder="¿Qué te pareció el curso?">
+            </div>
+            <div id="revError" style="display:none;background:#FEF2F2;border:1px solid #FECACA;color:#DC2626;padding:.7rem 1rem;border-radius:10px;font-size:.82rem;margin-bottom:.5rem;text-align:center"></div>
+            <button class="btn-confirm" id="btnSubmitReview" onclick="submitReview()">
+                Publicar Reseña
+            </button>
+        </div>
+    </div>
+</div>
+
+<script>
+    // ── Configuración ──────────────────────────────────────
+    // En local: http://localhost:3000
+    // En Render: cambia este valor por tu URL de Render
+    const API = '';   // vacío = usa la misma origin (funciona tanto local como en Render)
+
+    let currentCourseId   = null;
+    let currentPayMethod  = 'card';
+    let selectedAppMethod = 'nequi';
+
+    const COURSES = {
+        1: { name:'Psicología Comunitaria: Fundamentos e Intervención', price:'$149.000 COP', ref:'CURSO01' },
+        2: { name:'Salud Mental Colectiva: Herramientas y Estrategias',  price:'$189.000 COP', ref:'CURSO02' },
+        3: { name:'Transformación Social desde la Psicología',           price:'$129.000 COP', ref:'CURSO03' }
+    };
+
+    // ── Cargar estadísticas al iniciar ──────────────────────
+    async function loadStats() {
+        try {
+            const res  = await fetch(`${API}/api/stats`);
+            const data = await res.json();
+            let totalEnrolled = 0, totalRating = 0, ratingCount = 0;
+            data.forEach(c => {
+                totalEnrolled += c.enrolled;
+                document.getElementById(`count-${c.course_id}`).textContent = c.enrolled;
+                const avg = c.avg_rating || 0;
+                const cnt = c.review_count || 0;
+                const stars = avg > 0 ? starsFromRating(avg) : '★★★★★';
+                document.getElementById(`stars-${c.course_id}`).textContent = stars;
+                document.getElementById(`rating-text-${c.course_id}`).textContent =
+                    cnt > 0 ? `${avg} · ${cnt} reseña${cnt !== 1 ? 's' : ''}` : 'Sin reseñas aún';
+                if (avg > 0) { totalRating += avg; ratingCount++; }
+            });
+            document.getElementById('totalEnrolled').textContent = totalEnrolled + '+';
+            document.getElementById('globalRating').textContent  = ratingCount > 0
+                ? (totalRating / ratingCount).toFixed(1) + '★'
+                : '5★';
+        } catch(e) {
+            console.warn('Servidor no disponible — abriendo en modo estático');
+            [1,2,3].forEach(id => {
+                document.getElementById(`count-${id}`).textContent = '—';
+                document.getElementById(`rating-text-${id}`).textContent = 'Inicia el servidor';
+            });
+            document.getElementById('totalEnrolled').textContent = '500+';
+            document.getElementById('globalRating').textContent  = '4.8★';
+        }
+    }
+
+    function starsFromRating(avg) {
+        const full = Math.floor(avg), hasHalf = avg - full >= 0.5;
+        return '★'.repeat(full) + (hasHalf ? '½' : '') + '☆'.repeat(5 - full - (hasHalf ? 1 : 0));
+    }
+
+    // ── DOFA ───────────────────────────────────────────────
+    function openDofa()  { document.getElementById('dofaOverlay').classList.add('open'); document.body.style.overflow='hidden'; }
+    function closeDofa() { document.getElementById('dofaOverlay').classList.remove('open'); document.body.style.overflow=''; }
+
+    // ── PAGO ───────────────────────────────────────────────
+    function openPay(id) {
+        currentCourseId = id;
+        const c = COURSES[id];
+        document.getElementById('payName').textContent  = c.name;
+        document.getElementById('payPrice').textContent = c.price;
+        document.getElementById('payRef').textContent   = c.ref;
+        document.getElementById('payContent').style.display = 'block';
+        document.getElementById('successBox').classList.remove('on');
+        document.getElementById('payError').style.display = 'none';
+        switchTab('card', document.querySelectorAll('.ptab')[0]);
+        document.getElementById('payOverlay').classList.add('open');
+        document.body.style.overflow = 'hidden';
+    }
+    function closePay() {
+        document.getElementById('payOverlay').classList.remove('open');
+        document.body.style.overflow='';
+        clearPayForms();
+    }
+    function clearPayForms() {
+        ['c_name','c_occupation','c_email','c_phone','c_city',
+         'c_cardname','c_cardnum','c_exp','c_cvv',
+         'n_name','n_occupation','n_email','n_phone','n_city'].forEach(id => {
+            const el = document.getElementById(id);
+            if(el) el.value = '';
+        });
+    }
+    function switchTab(which, btn) {
+        currentPayMethod = which;
+        document.querySelectorAll('.ptab').forEach(t => t.classList.remove('on'));
+        document.querySelectorAll('.pform').forEach(f => f.classList.remove('on'));
+        btn.classList.add('on');
+        document.getElementById(which === 'card' ? 'cardForm' : 'nequiForm').classList.add('on');
+        document.getElementById('payError').style.display = 'none';
+    }
+    function selApp(el, method) {
+        selectedAppMethod = method;
+        document.querySelectorAll('.nq-opt').forEach(o => o.classList.remove('sel'));
+        el.classList.add('sel');
+        document.getElementById('appSel').textContent = method === 'nequi' ? 'Nequi' : 'Daviplata';
+    }
+
+    async function submitEnroll(method) {
+        const isCard = method === 'card';
+        const p = isCard ? 'c_' : 'n_';
+        const full_name      = document.getElementById(p+'name').value.trim();
+        const email          = document.getElementById(p+'email').value.trim();
+        const phone          = document.getElementById(p+'phone').value.trim();
+        const city           = document.getElementById(p+'city').value.trim();
+        const country        = document.getElementById(p+'country').value;
+        const occupation     = document.getElementById(p+'occupation').value.trim();
+        const payment_method = isCard ? 'card' : selectedAppMethod;
+
+        if (!full_name || !email || !phone || !city) {
+            showPayError('Por favor completa todos los campos obligatorios.');
+            return;
+        }
+        if (!validateEmail(email)) {
+            showPayError('Por favor ingresa un correo electrónico válido.');
+            return;
+        }
+        if (isCard) {
+            const cardnum = document.getElementById('c_cardnum').value.replace(/\s/g,'');
+            const exp     = document.getElementById('c_exp').value;
+            const cvv     = document.getElementById('c_cvv').value;
+            if (!cardnum || cardnum.length < 13 || !exp || !cvv) {
+                showPayError('Por favor completa todos los datos de tu tarjeta.');
+                return;
+            }
+        }
+
+        const btn = document.getElementById(isCard ? 'btnConfirmCard' : 'btnConfirmNequi');
+        btn.disabled = true;
+        btn.innerHTML = '<span class="loading-spin"></span> Procesando...';
+
+        try {
+            const res = await fetch(`${API}/api/enroll`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ course_id: currentCourseId, full_name, email, phone, city, country, occupation, payment_method })
+            });
+            const data = await res.json();
+            if (!res.ok) {
+                showPayError(data.error || 'Ocurrió un error. Intenta de nuevo.');
+                btn.disabled = false;
+                btn.innerHTML = isCard ? '<i class="fas fa-lock"></i> Confirmar inscripción' : '✅ Confirmar inscripción';
+                return;
+            }
+            document.getElementById('payContent').style.display = 'none';
+            document.getElementById('successBox').classList.add('on');
+            document.getElementById('successMsg').textContent =
+                `¡Hola ${full_name}! Tu inscripción al curso fue confirmada. Te enviaremos los detalles a ${email}.`;
+            document.getElementById(`count-${currentCourseId}`).textContent = data.enrolled;
+        } catch(e) {
+            showPayError('No se pudo conectar al servidor. Verifica que el servidor esté corriendo.');
+            btn.disabled = false;
+            btn.innerHTML = isCard ? '<i class="fas fa-lock"></i> Confirmar inscripción' : '✅ Confirmar inscripción';
+        }
+    }
+
+    function showPayError(msg) {
+        const el = document.getElementById('payError');
+        el.textContent = msg;
+        el.style.display = 'block';
+    }
+
+    // ── RESEÑAS ────────────────────────────────────────────
+    async function openReviews(courseId, courseName) {
+        currentCourseId = courseId;
+        document.getElementById('revCourseName').textContent = courseName;
+        document.getElementById('revOverlay').classList.add('open');
+        document.body.style.overflow = 'hidden';
+        document.getElementById('revError').style.display = 'none';
+        document.getElementById('btnSubmitReview').disabled = false;
+        document.getElementById('btnSubmitReview').textContent = 'Publicar Reseña';
+        clearRevForm();
+        await fetchReviews(courseId);
+    }
+    function closeReviews() {
+        document.getElementById('revOverlay').classList.remove('open');
+        document.body.style.overflow = '';
+    }
+    function clearRevForm() {
+        ['rv_name','rv_email','rv_comment'].forEach(id => { document.getElementById(id).value = ''; });
+        document.querySelectorAll('input[name="stars"]').forEach(r => r.checked = false);
+    }
+
+    async function fetchReviews(courseId) {
+        const list = document.getElementById('revList');
+        list.innerHTML = '<p style="text-align:center;color:var(--gray);font-size:.88rem;">Cargando...</p>';
+        try {
+            const res  = await fetch(`${API}/api/reviews?courseId=${courseId}`);
+            const data = await res.json();
+            if (!data.length) {
+                list.innerHTML = '<div class="no-reviews">Aún no hay reseñas. ¡Sé el primero en opinar!</div>';
+                return;
+            }
+            list.innerHTML = data.map(r => `
+                <div class="rev-item">
+                    <div class="rev-top">
+                        <span class="rev-name">${escHtml(r.reviewer_name)}</span>
+                        <span class="rev-stars">${'★'.repeat(r.rating)}${'☆'.repeat(5-r.rating)}</span>
+                        <span class="rev-date">${r.date}</span>
+                    </div>
+                    <div class="rev-comment">${escHtml(r.comment)}</div>
+                </div>
+            `).join('');
+        } catch(e) {
+            list.innerHTML = '<div class="no-reviews">No se pudo cargar las reseñas. Inicia el servidor.</div>';
+        }
+    }
+
+    async function submitReview() {
+        const reviewer_name = document.getElementById('rv_name').value.trim();
+        const email         = document.getElementById('rv_email').value.trim();
+        const comment       = document.getElementById('rv_comment').value.trim();
+        const ratingInput   = document.querySelector('input[name="stars"]:checked');
+
+        if (!reviewer_name || !email || !comment || !ratingInput) {
+            document.getElementById('revError').textContent = 'Por favor completa todos los campos y selecciona una calificación.';
+            document.getElementById('revError').style.display = 'block';
+            return;
+        }
+        if (!validateEmail(email)) {
+            document.getElementById('revError').textContent = 'Por favor ingresa un correo válido.';
+            document.getElementById('revError').style.display = 'block';
+            return;
+        }
+
+        const btn = document.getElementById('btnSubmitReview');
+        btn.disabled = true;
+        btn.innerHTML = '<span class="loading-spin"></span> Publicando...';
+        document.getElementById('revError').style.display = 'none';
+
+        try {
+            const res = await fetch(`${API}/api/reviews`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ course_id: currentCourseId, reviewer_name, email, rating: Number(ratingInput.value), comment })
+            });
+            const data = await res.json();
+            if (!res.ok) {
+                document.getElementById('revError').textContent = data.error || 'Error al publicar.';
+                document.getElementById('revError').style.display = 'block';
+                btn.disabled = false;
+                btn.textContent = 'Publicar Reseña';
+                return;
+            }
+            clearRevForm();
+            await fetchReviews(currentCourseId);
+            document.getElementById(`rating-text-${currentCourseId}`).textContent =
+                `${data.avg} · ${data.count} reseña${data.count !== 1 ? 's' : ''}`;
+            document.getElementById(`stars-${currentCourseId}`).textContent = starsFromRating(data.avg);
+            btn.disabled = false;
+            btn.textContent = '¡Reseña publicada! ✅';
+            setTimeout(() => { btn.textContent = 'Publicar Reseña'; }, 2500);
+        } catch(e) {
+            document.getElementById('revError').textContent = 'No se pudo conectar al servidor.';
+            document.getElementById('revError').style.display = 'block';
+            btn.disabled = false;
+            btn.textContent = 'Publicar Reseña';
+        }
+    }
+
+    // ── UTILS ──────────────────────────────────────────────
+    function validateEmail(e) { return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e); }
+    function escHtml(s) { return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+
+    // Cerrar modals con clic en overlay
+    ['dofaOverlay','payOverlay','revOverlay'].forEach(id => {
+        document.getElementById(id).addEventListener('click', function(e) {
+            if (e.target === this) {
+                if (id === 'dofaOverlay') closeDofa();
+                else if (id === 'payOverlay') closePay();
+                else closeReviews();
+            }
+        });
+    });
+
+    // Formato tarjeta
+    document.getElementById('c_cardnum').addEventListener('input', function() {
+        let v = this.value.replace(/\D/g,'').substring(0,16);
+        this.value = v.replace(/(\d{4})(?=\d)/g,'$1 ');
+    });
+    document.getElementById('c_exp').addEventListener('input', function() {
+        let v = this.value.replace(/\D/g,'').substring(0,4);
+        if(v.length >= 2) v = v.substring(0,2)+'/'+v.substring(2);
+        this.value = v;
+    });
+
+    // Navbar scroll
+    window.addEventListener('scroll', function() {
+        document.getElementById('mainNav').style.background =
+            window.scrollY > 60 ? 'rgba(26,26,46,1)' : 'rgba(26,26,46,.97)';
+    });
+
+    // Iniciar
+    loadStats();
+</script>
+</body>
+</html>
